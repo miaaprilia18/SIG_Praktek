@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latihan Menampilka sekolah SD </title>
+    <link rel="stylesheet" type="text/css" href="leaflet.css"/>
+    <script type="text/javascript" src="leaflet.js"></script>
+</head>
+
+<body>
+    <div id="map_pertama" style="width: 100%; height: 600px;"></div>
+</body>
+
+<script type="text/javascript">
+    var myMap = L.map('map_pertama').setView([-0.9285558,100.3629103],15);
+
+    var title = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        maxZoom: 19,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(myMap);
+
+    
+
+    var myLocation = [
+        //[-0.924381,100.3623671, 'Masjid Raya Sumbar','Informasi Tentang Masjid Raya Sumbar'],
+        [-0.9356182,100.3558622, 'Kantor Gubernur Sumbar','Informasi Tentang Kantor Gubernur Sumbar'],
+        [-0.87595,100.3869792, 'Kantor Walikota Padang','Informasi Tentang Walikota Padang'],
+        [-0.913817,100.4657455, 'Politeknik Negeri Padang','Informasi Tentang PNP'],
+    ];
+
+    var LeafIcon = L.Icon.extend({
+        options: {
+            iconSize: [50,50]
+        }
+    })
+
+    var masjidicon = new LeafIcon({iconUrl: 'images/markermasjid.png'});
+
+   L.marker([-0.9403828418408683, 100.39811070086407]).bindTooltip("Sekolah Dasar 16 Pisang").addTo(myMap); // SD 16 Pisang
+   L.marker([-0.9427083617926755, 100.40334398592935]).bindTooltip("Sekolah Dasar 04 Pisang").addTo(myMap); // SD 04 Pisang
+   L.marker([-0.9438099445436263, 100.4030341138423]).bindTooltip("Sekolah Dasar12 Pisang").addTo(myMap); // SD 12 Pisang
+   L.marker([-0.9487041384282809, 100.39750494109956]).bindTooltip("Sekolah Dasar 35 parak karakah").addTo(myMap); // SD 35 parak karakah
+   L.marker([-0.9381104601145868, 100.3837776282552]).bindTooltip("Sekolah Dasar 22 Andalas").addTo(myMap); // SD 22 Andalas
+   L.marker([-0.9185261716943363, 100.422153702318]).bindTooltip("Sekolah Dasar 22 Kuranji").addTo(myMap); // SD 22 kuranji
+   L.marker([-0.9323744961164211, 100.40756984985822]).bindTooltip("Sekolah Dasar17 Pasar Ambacang").addTo(myMap); // SD 17 Pasar Ambacang
+   L.marker([-0.9348209415265428, 100.40247413850997]).bindTooltip("Sekolah Dasar31 Pasar Ambacang").addTo(myMap); // SD 31 Pasar Ambacang
+   L.marker([-0.9251833066568735, 100.40735610673633]).bindTooltip("Sekolah Dasar 04 Pasar Ambacang").addTo(myMap); // SD 04 Pasar Ambacang
+   L.marker([-0.93371072973702, 100.3885114730263]).bindTooltip("Sekolah Dasar 37 Anduring").addTo(myMap); // SD 37 Anduring
+
+
+   var info_SekolahDasar16Pisang= '<p style="text-align: center;"> <img src="http://p3m.pnp.ac.id/wp-content/uploads/2020/04/pnp.jpg" width="250px" height="100px"></p><p>.</p>';
+   L.marker([-0.9403828418408683, 100.39811070086407]).bindTooltip("Sekolah Dasar 16 Pisang").addTo(myMap); // SD 16 Pisang
+    var info_kantor_gubernur = '<p style="text-align: center;"> <img src="https://cl-static-v3.padangkita.com/wp-content/uploads/2020/09/kantor-gubernur.jpg" width="250px" height="100px"></p><p>Kantor Gubernur Prov. Sumatera Barat yang terletak di Jalan. Sudirman Padang, mulai dibangun pada tahun1961 atas gagasan dan prakarsa Gubernur Sumbar pada saat itu alm. Kaharoeddin Dt. Rangkayo Basa untuk mengembalikan "batang tarandam", jati diri dan eksistensi masyarakat Minang yang terpuruk setelah peristiwa PRRI.</p>';
+    L.marker([-0.9374867431110305, 100.36039978464098],17).bindTooltip("Kantor Gubernur Sumatera Barat").bindPopup(info_kantor_gubernur).addTo(mymap); //kantor gubernur
+
+
+    var info_masjid_raya = '<p style="text-align: center;"> <iframe width="250px" height="100px"src="https://www.youtube.com/embed/aqW5KASLztQ" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture" allowfullscreen></iframe></p><p style="text-align: justify;">Masjid ini berada di Jalan Khatib Sulaiman, Alai Parak Kopi, Padang Utara dan dibangun di atas lahan seluas 0 ribu meter persegi, dengan luas bangunan mencapai 18 ribu meter persegi. Tak serupa masjid pada umumnya, masjid ini justru tak memiliki kubah, melainkan hanya memiliki atap khas budaya Minangkabau. Bagian atapnya memiliki desain Rumah Gadang dengan empat sudut lancip, sedangkan bangunannya berbentuk gonjong.</p>';
+
+
+    var circle = L.circle([-0.9403828418408683, 100.39811070086407],{
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 300
+    }).addTo(myMap);
+
+    var polygon = L.polygon([[-0.9403828418408683, 100.39811070086407],
+                             [-0.9427083617926755, 100.40334398592935],
+                             [-0.9438099445436263, 100.4030341138423],
+                             [-0.9487041384282809, 100.39750494109956],
+                             [-0.9381104601145868, 100.3837776282552],
+                             [-0.9185261716943363, 100.422153702318],
+                             [-0.9323744961164211, 100.40756984985822],
+                             [-0.9348209415265428, 100.40247413850997],
+                             [-0.9251833066568735, 100.40735610673633],
+                             [-0.93371072973702, 100.3885114730263],
+                        ]).addTo(myMap).bindPopup('I am a polygon');
+    
+    var popup = L.popup().setLatLng([[-0.9403828418408683, 100.39811070086407]]).setContent('!I am a stand alone popup.').openOn(myMap);
+
+    function onMapclick(e){
+        popup.setLatLng(e.latlng).setContent('!You Clicked the map at' + e.latlng.toString()).openOn(myMap);
+    }
+
+    L.polyline(JalanKeBarak).addTo(myMap);
+
+var DuaJalanKePoli =[
+  // Array kordine jalan pertama
+  [
+         [-0.9403828418408683, 100.39811070086407],
+                             [-0.9427083617926755, 100.40334398592935],
+                             [-0.9438099445436263, 100.4030341138423],
+                             [-0.9487041384282809, 100.39750494109956],
+                             [-0.9381104601145868, 100.3837776282552],
+                             [-0.9185261716943363, 100.422153702318],
+                             [-0.9323744961164211, 100.40756984985822],
+                             [-0.9348209415265428, 100.40247413850997],
+                             [-0.9251833066568735, 100.40735610673633],
+                             [-0.93371072973702, 100.3885114730263]
+  ],
+  // Array kordinate jalan kedua
+  [
+  [-0.9403828418408683, 100.39811070086407],
+                             [-0.9427083617926755, 100.40334398592935],
+                             [-0.9438099445436263, 100.4030341138423],
+                             [-0.9487041384282809, 100.39750494109956],
+                             [-0.9381104601145868, 100.3837776282552],
+                             [-0.9185261716943363, 100.422153702318],
+                             [-0.9323744961164211, 100.40756984985822],
+                             [-0.9348209415265428, 100.40247413850997],
+                             [-0.9251833066568735, 100.40735610673633],
+                             [-0.93371072973702, 100.3885114730263]
+
+
+  ]
+];
+
+L.polyline(JalanKeBarak).addTo(myMap);
+
+var DuaJalanKePoli =[
+  // Array kordine jalan pertama
+  [
+      [-0.923044,100.448551],
+      [-0.921064,100.451353],
+      [-0.917667,100.455348],
+      [-0.907876,100.463411],
+      [-0.912420,100.468700],
+
+  ],
+  // Array kordinate jalan kedua
+  [
+      [-0.922995,100.448572],
+      [-0.919171,100.453870],
+      [-0.918466,100.454592],
+      [-0.917946,100.457799],
+      [-0.917946,100.461660],
+      [-0.914660,100.462959],
+      [-0.914952,100.467663],
+      [-0.914952,100.467728],
+
+
+  ]
+];
+
+L.polyline(DuaJalanKePoli).addTo(myMap);
+
+L.marker([-0.907876,100.461421])
+  .bindTooltip("<b> Jalan Terjauh </b> <br> Jarak 7 KM")
+  .addTo(myMap); // pop disalah satu line
+
+  L.marker([-0.914660,100.462959])
+  .bindTooltip("<b> Jalan Tercepat </b> <br> Jarak 4 KM")
+  .addTo(myMap); // pop disalah satu line
+
+
+
+
+
+</script>
+</html>
